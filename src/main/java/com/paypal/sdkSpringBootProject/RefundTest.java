@@ -17,7 +17,7 @@ import java.security.cert.X509Certificate;
 public class RefundTest {
 
 
-    public static void main(String[] args) {
+    public void refundTransfer() throws NoSuchAlgorithmException, KeyManagementException {
         try {
             SSLIssue.resolveSSLIssue();
             Hyperwallet client = new Hyperwallet("selrestuser@330068",
@@ -34,10 +34,6 @@ public class RefundTest {
         } catch (HyperwalletException e) {
             System.out.println("Value of the exception:::" + e.getErrorMessage());
             System.out.println("Value of the exception:::" + e.getCause());
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
         }
     }
 }
