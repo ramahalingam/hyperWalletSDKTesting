@@ -16,27 +16,10 @@ import java.security.cert.X509Certificate;
 
 public class RefundTest {
 
-    private static class DefaultTrustManager implements X509TrustManager {
-
-        public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
-        }
-
-        public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
-        }
-
-        public X509Certificate[] getAcceptedIssuers() {
-            return null;
-        }
-    }
-
 
     public static void main(String[] args) {
         try {
-
-            SSLContext ctx = SSLContext.getInstance("TLS");
-            ctx.init(new KeyManager[0], new TrustManager[]{new DefaultTrustManager()}, new SecureRandom());
-            SSLContext.setDefault(ctx);
-
+            SSLIssue.resolveSSLIssue();
             Hyperwallet client = new Hyperwallet("selrestuser@330068",
                     "Password1!", "prg-0438cadc-614c-11e5-af23-0faa28ca7c0f",
                     "https://localhost:8181");
